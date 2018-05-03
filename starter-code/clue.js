@@ -93,6 +93,10 @@ var roomsArray = [];
 // Weapons Collection
 var weaponsArray = [];
 
+
+
+//rellenar array con los  objetos de personajes
+
  var mrGreen = {
     first_name:   "Jacob",
     last_name:    "Green",
@@ -104,8 +108,8 @@ var weaponsArray = [];
  }
 
  var drOrchid = {
-    rst_name:   "Doctor",
-    lst_name:    "Orchid",
+    first_name:   "Doctor",
+    last_name:    "Orchid",
     color:        "white",
     description:  "PhD in plant toxicology. Adopted daughter of Mr. Boddy",
     age:          26,
@@ -154,8 +158,8 @@ var mrMustard = {
 }
 
 charactersArray.push(mrGreen, drOrchid, profPlum, missScarlet, mrsPeacock, mrMustard);
+//rellenar array con los  objetos de armas
 
-weaponsArray.push(arma1,arma2,arma3,arma4,arma5,arma6,arma7,arma8,arma9);
 
 var arma1 = {name: "rope",   weight: 10,}
 var arma2 = {name: "knife",  weight: 8,}
@@ -167,7 +171,11 @@ var arma7 = {name: "bat",    weight: 13,}
 var arma8 = {name: "trophy",   weight: 25,}
 var arma9 = {name: "pistol",   weight: 20,}
 
-roomsArray.push(room1, room2,room3, room4, room5, room6, room7, room8, room9, room10, room11, room12,room13, room14, room15);
+weaponsArray.push(arma1,arma2,arma3,arma4,arma5,arma6,arma7,arma8,arma9);
+//rellenar array con los  objetos de habitaciones
+
+
+
 
 var room1 = {name: "Dinning Room"}
 var room2 = {name: "Conservatory"}
@@ -180,7 +188,37 @@ var room8 = {name: "Ballroom"}
 var room9 = {name: "Hall"}
 var room10 = {name: "Spa"}
 var room11 = {name: "Living Room"}
-var room12= {name: "Observatory"}
+var room12 = {name: "Observatory"}
 var room13 = {name: "Theater"}
 var room14 = {name: "Guest House"}
 var room15 = {name: "Patio"}
+
+roomsArray.push(room1, room2, room3, room4, room5, room6, room7, room8, room9, room10, room11, room12,room13, room14, room15);
+
+
+function aleatorio (array){
+    var indiceRandom = Math.floor(Math.random() * array.length); 
+    var elemento = array[indiceRandom];
+    //retorno  del elemento del array
+    return elemento;
+}
+
+//funcion llama a la  anterior"aleatorio"
+function almacenarDatos(){
+    var arrayCartas = [];
+    //llamada dentro de push
+    arrayCartas.push(aleatorio(charactersArray));
+    arrayCartas.push(aleatorio(weaponsArray));
+    arrayCartas.push(aleatorio(roomsArray));
+    //return del array
+    return arrayCartas;
+}
+
+
+function revelarMisterio(){
+    //llamada a la funcion  donde recibe el retorno del  array
+    var cartas = almacenarDatos();
+    document.write("El asesino ha sido "+cartas[0].first_name+" con un "+cartas[1].name+ " en "+cartas[2].name+" con una fuerza de "+cartas[1].weight);
+}
+
+revelarMisterio();
